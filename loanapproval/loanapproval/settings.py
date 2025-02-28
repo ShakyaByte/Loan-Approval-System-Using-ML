@@ -117,11 +117,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'loanapprovaldb',
         'USER': 'root',
-        'PASSWORD': 'yamahar15v3',
-        # 'PASSWORD': 'Infiniti@111',
-        # 'PASSWORD': 'binesh9845998009',
+        'PASSWORD': 'writeyourdbpassword',
+       
         'HOST': '127.0.0.1',
         'PORT': '3306',
+        
     }
 }
 
