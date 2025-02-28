@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Register</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registerLogin.css' %}">
+</head>
+<body data-signup-messages="{{ signup_messages|length }}" 
+data-signin-messages="{{ signin_messages|length }}">
+
+<div class="container" id="container">
+    <div class="form-container sign-up">
+        <form id="signUpForm" method="post" action="{% url 'user_action' %}">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="SignUp">
+            <h1>Create Account</h1>
+            <span>Use your email for registration</span>
+
+            <!-- New Fields -->
+            <input type="text" name="firstname" placeholder="First Name" required>
+            <input type="text" name="lastname" placeholder="Last Name" required>
+            <input type="email" name="Remail" placeholder="Email" required>
+            <input type="date" name="dob" placeholder="Date of Birth" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="password" name="Rpassword" placeholder="Password" required>
+
+            <!-- Agree Terms -->
+            <label>
+                <input type="checkbox" name="agree_terms" required> I agree to the terms and conditions
+            </label>
+
+        <!-- SignUp Messages -->
+        {% if signup_messages %}
+        <ul>
+            {% for message in signup_messages %}
+            <li style="color: red; font-size: 14px; font-weight: bold; margin-top: 10px;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+            <button type="submit" >SignUp</button>
+        </form>
+    </div>
+    <div class="form-container sign-in">
+        <form id="signInForm" method="post" action="{% url 'user_action' %}">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="SignIn">
+            <h1>Sign In</h1>
+            <span>Use your email and password</span>
+            <input type="email" name="Lemail" placeholder="Email" required>
+            <input type="password" name="Lpassword" placeholder="Password" required>
+
+            {% if signup_messages_success %}
+            <ul>
+                {% for message in signup_messages_success %}
+                <li style="color: rgb(0, 255, 17); font-size: 14px; font-weight: bold; margin-top: 10px;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+           
+        <!-- SignIn Messages -->
+        {% if signin_messages %}
+        <ul>
+            {% for message in signin_messages %}
+            <li style="color: red; font-size: 14px; font-weight: bold; margin-top: 10px;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+            <a href="#">Forget Your Password?</a>
+            <button type="submit">SignIn</button>
+        </form>
+    </div>
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left" id="leftsection">
+                <h1>Welcome Back!</h1>
+                <p>Enter your personal details to use all of site features</p>
+                <button class="hidden" id="login">Sign In</button>
+            </div>
+            <div class="toggle-panel toggle-right" id="rightsection">
+                <h1>Hello, User!</h1>
+                <p>Register with your personal details to use all of site features</p>
+                <button class="hidden" id="register">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
