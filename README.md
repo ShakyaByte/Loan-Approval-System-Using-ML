@@ -28,7 +28,7 @@ I designed and implemented the **user interface (UI)**, ensuring a seamless user
 
 ### 1️⃣ Clone the Repository  
 ```bash  
-git clone [https://github.com/Shakyadon46/Loan-Approval-System-Using-ML.git]
+git clone [https://github.com/ShakyaByte/Loan-Approval-System-Using-ML.git]
 cd loan-approval 
 ```
 
